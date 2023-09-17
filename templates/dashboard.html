@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="{{ url_for('static', filename='d3_visualizations.js') }}"></script> 
+</head>
+
+<body>
+    <header>
+        <!-- consider replacing playlist with actual playlist name-->
+        <h1>ur taste is...interesting</h1><br> 
+    </header>
+    <div class = "dashboard">
+        <!-- implement customizability and interactiveness in graphs to highlight on resume -->
+        <div class="card" id="mood-distribution">
+            <h2>Song Mood Distribution</h2>
+            <svg width="500" height="400" id="moodPieChart"></svg>
+        </div>
+        <div class="card" id="dance-energy">
+            <h2>Danceability vs. Energy</h2>
+            <svg width="500" height="500" id="danceabilityEnergyPlot"></svg>
+        </div>
+        <div class="card" id="song-popularity">
+            <h2>Song Popularity</h2>
+            <svg width="500" height="500" id="songPopularityPlot"></svg>
+        </div>
+        <div class="card" id="artist-popularity">
+            <h2>Artist Popularity</h2>
+            <svg width="500" height="500" id="artistPopularityPlot"></svg>
+        </div>
+        <div class="card" id="favorite-genres">
+            <h2>Favorite Genres</h2>
+            <svg width="500" height="500" id="favoriteGenresPlot"></svg>
+        </div>
+        <form action="/home"></form>
+            <button onclick=redirectToPage() id="analyze-button">Analyze new playlist</button>
+        </form>
+        <script>
+            function redirectToPage() {
+                window.location.href = "http://127.0.0.1:5000/";
+            }
+
+            const playlist_id = "{{ id }}";
+            window.onload = function() {
+                fetchDataAndGenerateVisualization(playlist_id);
+            };
+            function fetchDataAndGenerateVisualization(playlist_id) {
+                fetch(`/get_playlist_data/${playlist_id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        createSongMoodVisualization(data.mood_distribution, '#moodPieChart');
+                        createDanceabilityVisualization(data.audio_features, '#danceabilityEnergyPlot');
+                        createPopularityVisualization(data.artist_and_popularity, '#songPopularityPlot');
+                        createArtistDistributionVisualization(data.artist_info, '#artistPopularityPlot')
+                        createFavoriteGenresVisualization(data.artist_info, '#favoriteGenresPlot')
+                    })
+                .catch(error => {
+                console.error("There was an error fetching the data:", error);
+                });
+            }
+        </script>
+    </div>
+</body>
+<footer>
+    <div class = "footer_content">
+        <p>Built by Ashley Yan</p>
+    </div>
+</footer>
+</html>

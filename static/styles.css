@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Phudu&family=Roboto:ital,wght@1,300&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Nunito+Sans:opsz@6..12&family=Phudu&family=Roboto:ital,wght@1,300&family=Ubuntu&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #121212;  /* Spotify's dark background color */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    font-size: 22px;
+    text-align: center;
+    font-family: 'Phudu', cursive;
+    margin-top: 40px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #1bd860;  /* Spotify's green color */
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#playlist_id {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 500px;
+    background-color: #333;
+    border: none;
+    color: white;
+}
+
+#analyze-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1bd860;
+    border: none;
+    color: #121212;
+    cursor: pointer;
+    border-radius: 45px;
+    margin-bottom: 50px;
+}
+
+.footer_content {
+    position: fixed;
+    bottom: 0;
+    background-color: #1bd860;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer_content p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dashboard {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #121212;  /* Spotify's dark background color */
+    color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #1E1E1E; /* Dark Gray */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+
+#moodPieChart {
+    margin: 20px;
+    width: 500px;
+    height: 400px;
+}
